@@ -1,6 +1,6 @@
 # Status Monitoring Application
 
-`https://status-app-git-main-abhi20161997s-projects.vercel.app` : Application Live URL
+`https://status-app-nine.vercel.app` : Application Live URL
 
 ## Overview
 
