@@ -23,7 +23,7 @@ const ServiceStatusList: React.FC<ServiceStatusListProps> = ({ services }) => {
                 service.status
               )}`}
             >
-              {service.status}
+              {service.status_display}
             </span>
           </div>
         ))}
