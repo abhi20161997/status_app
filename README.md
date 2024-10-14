@@ -1,5 +1,7 @@
 # Status Monitoring Application
 
+`https://status-5v7t1oekb-abhi20161997s-projects.vercel.app` : Application Live URL
+
 ## Overview
 
 This Status Monitoring Application is a React-based web application designed to help users monitor the status of various services, incidents, teams, organizations, and maintenance activities. It provides a user-friendly interface for managing and viewing real-time status information across different organizational units.
@@ -57,7 +59,7 @@ This Status Monitoring Application is a React-based web application designed to 
 
 3. Install dependencies:
    ```
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 4. Start the development server:

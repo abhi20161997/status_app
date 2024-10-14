@@ -237,7 +237,11 @@ const Home: React.FC = () => {
       ) : status ? (
         <>
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Services</h2>
+            {status.services.length > 0 ? (
+              <h2 className="text-2xl font-semibold mb-4">Services</h2>
+            ) : (
+              <h2 className="text-2xl font-semibold mb-4">No Services</h2>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {status.services.map((service) => (
                 <ServiceCard
@@ -252,6 +256,9 @@ const Home: React.FC = () => {
             </div>
           </div>
 
+          {status.services.length == 0 && (
+            <h2 className="text-2xl font-semibold mb-4">No Active Incidents</h2>
+          )}
           {status.active_incidents.length > 0 && (
             <div>
               <h2 className="text-2xl font-semibold mb-4">Active Incidents</h2>
@@ -265,6 +272,11 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </div>
+          )}
+          {status.services.length == 0 && (
+            <h2 className="text-2xl font-semibold mb-4">
+              No Scheduled Maintenances
+            </h2>
           )}
           {status.upcoming_maintenances.length > 0 && (
             <ScheduledMaintenanceList
