@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Status Monitoring Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This Status Monitoring Application is a React-based web application designed to help users monitor the status of various services, incidents, teams, organizations, and maintenance activities. It provides a user-friendly interface for managing and viewing real-time status information across different organizational units.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+1. **Organization Management**
+   - View organization details
+   - Invite new members
+   - Create teams within organizations
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Service Monitoring**
+   - Display status of multiple services (Operational, Degraded Performance, etc.)
+   - Show service descriptions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Incident Tracking**
+   - List active incidents
+   - Provide incident details and updates
 
-### `npm test`
+4. **Team Management**
+   - Create and view teams
+   - Display team member count
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Public Status Page**
+   - Generate a public-facing status page for external stakeholders
+   - Provide an external status API endpoint
 
-### `npm run build`
+6. **URL Checker**
+   - Built-in tool to check the status of external URLs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. **User Authentication**
+   - User-specific views and permissions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+8. **Maintenance Scheduling**
+   - Track and display scheduled maintenance activities
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Node.js (version X.X or higher)
+- npm (version X.X or higher)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
+   ```
+   git clone https://github.com/abhi20161997/status_app.git
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navigate to the project directory:
+   ```
+   cd status_app
+   ```
 
-## Learn More
+3. Install dependencies:
+   ```
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Start the development server:
+   ```
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Open your browser and visit `http://localhost:3000` to view the application.
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. SignUp/Log in with your credentials.
+2. Select an organization from the dropdown menu.
+3. Use the navigation menu to access different features:
+   - Home: Overview of teams and services
+   - Services: Detailed view of service statuses
+   - Incidents: List and manage active incidents
+   - Maintenances: Schedule and view maintenance activities
 
-### Analyzing the Bundle Size
+## Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For support, please email reachabhijitkumar@gmail.com or open an issue in the GitHub repository.
