@@ -9,7 +9,11 @@ const ServiceStatusList: React.FC<ServiceStatusListProps> = ({ services }) => {
   console.log("Rendering ServiceStatusList with services:", services);
   return (
     <div className="bg-white shadow rounded-lg p-6">
-      <h2 className="text-xl font-semibold mb-4">Service Status</h2>
+      {services.length == 0 ? (
+        <h2 className="text-xl font-semibold mb-4">No Services</h2>
+      ) : (
+        <h2 className="text-xl font-semibold mb-4">Service Status</h2>
+      )}
       <div className="space-y-4">
         {services.map((service) => (
           <div key={service.id} className="flex justify-between items-center">
