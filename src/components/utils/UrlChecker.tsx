@@ -32,7 +32,7 @@ const UrlChecker: React.FC = () => {
           );
         } else {
           setStatus(
-            "Unable to reach the site. It might be down or the URL might be incorrect."
+            "Unable to reach the site. It might be down or CORS could be disabled !"
           );
         }
       } else {
