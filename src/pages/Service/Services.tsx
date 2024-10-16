@@ -93,7 +93,11 @@ const Services: React.FC = () => {
       </form> */}
 
       <div className="bg-white p-6 rounded-md shadow">
-        <h2 className="text-xl font-semibold mb-4">Service List</h2>
+        {services.length > 0 ? (
+          <h2 className="text-xl font-semibold mb-4">Service List</h2>
+        ) : (
+          <h2 className="text-xl font-semibold mb-4">No Services Added</h2>
+        )}
         <div className="space-y-4">
           {services.map((service) => (
             <div

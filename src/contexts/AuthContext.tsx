@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { loginRequest, signupRequest, verifyTokenRequest } from "../api/auth";
-import { AuthContextType, User } from "../types";
 import {
-  getAccessToken,
-  removeTokens,
+  loginRequest,
+  signupRequest,
+  verifyTokenRequest,
   setAccessToken,
   setRefreshToken,
-} from "../utils/auth";
+  getAccessToken,
+  removeTokens,
+} from "../utils";
+import { AuthContextType, User } from "../types";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -35,9 +37,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           console.error("Token verification failed:", error);
           logout();
         }
-      } else {
-        setLoading(false);
       }
+      setLoading(false);
     };
     initAuth();
   }, []);
@@ -47,7 +48,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const response = await verifyTokenRequest(token);
       setIsAuthenticated(true);
       setUser(response.data.user_data);
-      setLoading(false);
     } catch (error) {
       throw error;
     }
@@ -58,8 +58,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const response = await loginRequest(username, password);
       setAccessToken(response.data.access);
       setRefreshToken(response.data.refresh);
-      setIsAuthenticated(true);
-      setUser(response.data.user_data);
+      await verifyToken(response.data.access);
     } catch (error) {
       console.error("Login failed:", error);
       throw error;
@@ -71,8 +70,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const response = await signupRequest(username, email, password);
       setAccessToken(response.data.access);
       setRefreshToken(response.data.refresh);
-      setIsAuthenticated(true);
-      setUser(response.data.user_data);
+      await verifyToken(response.data.access);
     } catch (error) {
       console.error("Signup failed:", error);
       throw error;

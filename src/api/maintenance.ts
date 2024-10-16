@@ -1,25 +1,45 @@
-import axios from "axios";
-import { getAccessToken } from "../utils/auth";
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
-const token = getAccessToken();
+import { authAxios } from "../utils";
 
 export const fetchOrgMaintenances = (orgId: string) => {
-  return axios.get(`${API_BASE_URL}/organizations/${orgId}/maintenances/`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  return authAxios.get(`/organizations/${orgId}/maintenances/`);
 };
 
 export const createMaintenance = (orgId: string, data: string) => {
-  return axios.post(
-    `${API_BASE_URL}/organizations/${orgId}/maintenances/`,
+  return authAxios.post(`/organizations/${orgId}/maintenances/`, data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+// Additional maintenance-related functions
+export const fetchMaintenanceDetails = (
+  orgId: string,
+  maintenanceId: string
+) => {
+  return authAxios.get(
+    `/organizations/${orgId}/maintenances/${maintenanceId}/`
+  );
+};
+
+export const updateMaintenance = (
+  orgId: string,
+  maintenanceId: string,
+  data: string
+) => {
+  return authAxios.patch(
+    `/organizations/${orgId}/maintenances/${maintenanceId}/`,
     data,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     }
+  );
+};
+
+export const deleteMaintenance = (orgId: string, maintenanceId: string) => {
+  return authAxios.delete(
+    `/organizations/${orgId}/maintenances/${maintenanceId}/`
   );
 };

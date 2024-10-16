@@ -1,40 +1,22 @@
-import axios from "axios";
-import { getAccessToken } from "../utils/auth";
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
-const token = getAccessToken();
+import { authAxios } from "../utils";
 
 export const fetchOrgIncidents = (orgId: string) => {
-  return axios.get(`${API_BASE_URL}/organizations/${orgId}/incidents/`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  return authAxios.get(`/organizations/${orgId}/incidents/`);
 };
 
 export const fetchServiceIncidents = (orgId: string, serviceId: string) => {
-  return axios.get(
-    `${API_BASE_URL}/organizations/${orgId}/services/${serviceId}/incidents/`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
+  return authAxios.get(
+    `/organizations/${orgId}/services/${serviceId}/incidents/`
   );
 };
 
 export const fetchIncidentDetails = (orgId: string, incidentId: string) => {
-  return axios.get(
-    `${API_BASE_URL}/organizations/${orgId}/incidents/${incidentId}/`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
+  return authAxios.get(`/organizations/${orgId}/incidents/${incidentId}/`);
 };
 
 export const fetchIncidentUpdates = (orgId: string, incidentId: string) => {
-  return axios.get(
-    `${API_BASE_URL}/organizations/${orgId}/incidents/${incidentId}/updates/`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
+  return authAxios.get(
+    `/organizations/${orgId}/incidents/${incidentId}/updates/`
   );
 };
 
@@ -43,12 +25,11 @@ export const postIncidentUpdate = (
   incidentId: string,
   data: string
 ) => {
-  return axios.post(
-    `${API_BASE_URL}/organizations/${orgId}/incidents/${incidentId}/updates/`,
+  return authAxios.post(
+    `/organizations/${orgId}/incidents/${incidentId}/updates/`,
     data,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     }
@@ -60,12 +41,11 @@ export const editIncident = (
   incidentId: string,
   data: string
 ) => {
-  return axios.patch(
-    `${API_BASE_URL}/organizations/${orgId}/incidents/${incidentId}/`,
+  return authAxios.patch(
+    `/organizations/${orgId}/incidents/${incidentId}/`,
     data,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     }
@@ -73,10 +53,13 @@ export const editIncident = (
 };
 
 export const createIncidentForServices = (orgId: string, data: string) => {
-  return axios.post(`${API_BASE_URL}/organizations/${orgId}/incidents/`, data, {
+  return authAxios.post(`/organizations/${orgId}/incidents/`, data, {
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
+};
+
+export const deleteIncident = (orgId: string, incidentId: string) => {
+  return authAxios.delete(`/organizations/${orgId}/incidents/${incidentId}/`);
 };

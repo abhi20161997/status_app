@@ -18,6 +18,7 @@ import CreateOrganizationForm from "../pages/Organisation/CreateOrganizationForm
 import InviteMemberForm from "../pages/Organisation/InviteMemberForm";
 import CreateTeamForm from "../components/Team/CreateTeamForm";
 import ScheduledMaintenanceList from "../components/Maintenance/ScheduledMaintenanceList";
+import { generateUniqueSlug } from "../utils";
 
 const Home: React.FC = () => {
   const { user, isAuthenticated, loading } = useAuth();
@@ -74,6 +75,7 @@ const Home: React.FC = () => {
     setSelectedOrg(org);
     localStorage.setItem("selectedOrgId", org.id);
     localStorage.setItem("selectedOrg", JSON.stringify(org));
+    window.dispatchEvent(new Event("organizationChanged"));
     setError(null);
     setIsLoadingStatus(true);
     setIsLoadingTeams(true);
@@ -112,7 +114,7 @@ const Home: React.FC = () => {
   const handleCreateOrganization = async (name: string) => {
     setError(null);
     try {
-      const newOrgCreationData = { name, slug: name };
+      const newOrgCreationData = { name, slug: generateUniqueSlug(name) };
       const newOrg = await createOrganization(
         JSON.stringify(newOrgCreationData)
       );
