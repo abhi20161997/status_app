@@ -75,7 +75,9 @@ const Home: React.FC = () => {
     setSelectedOrg(org);
     localStorage.setItem("selectedOrgId", org.id);
     localStorage.setItem("selectedOrg", JSON.stringify(org));
-    window.dispatchEvent(new Event("organizationChanged"));
+      window.dispatchEvent(
+        new CustomEvent("selectedOrgChanged", { detail: org })
+      );
     setError(null);
     setIsLoadingStatus(true);
     setIsLoadingTeams(true);

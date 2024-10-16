@@ -15,23 +15,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [selectedOrg, setSelectedOrg] = useState<Organization | null>(null);
 
   useEffect(() => {
-    const updateSelectedOrg = () => {
-      const cachedOrg = localStorage.getItem("selectedOrg");
-      if (cachedOrg) {
-        setSelectedOrg(JSON.parse(cachedOrg));
-      } else {
-        setSelectedOrg(null);
-      }
+
+    const handleOrgChange = (event: CustomEvent<Organization>) => {
+      console.log("incoming event data", event);
+      setSelectedOrg(event.detail);
     };
 
-    updateSelectedOrg();
+    window.addEventListener(
+      "selectedOrgChanged",
+      handleOrgChange as EventListener
+    );
 
-    // Add event listener for storage changes
-    window.addEventListener("storage", updateSelectedOrg);
-
-    // Cleanup function to remove event listener
     return () => {
-      window.removeEventListener("storage", updateSelectedOrg);
+      window.removeEventListener(
+        "selectedOrgChanged",
+        handleOrgChange as EventListener
+      );
     };
   }, []);
 
